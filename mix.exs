@@ -23,8 +23,10 @@ defmodule SHT21.Mixfile do
   end
 
   def application do
-    [applications: [:logger]],
-    mod: {:sht21, []}
+    [
+      applications: [:logger]],
+      mod: {:sht21, []}
+    ]
   end
 
   defp deps do
