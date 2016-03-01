@@ -32,9 +32,19 @@ end
 ```
 
 ```elixir
-SHT21.setup :sht21, intervall: <value in ms>  
+SHT21.setup :sht21, intervall: <value in ms>
+```
 
 
+buffered reading
+```elixir
+SHT21.read_sensor(:sht21)
+```
+
+direct reading
+```elixir
+SHT21.direct_read_sensor(:sht21)
+```
 
 ## Work List
 - [ ] Finish documentation
