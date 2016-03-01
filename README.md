@@ -52,6 +52,7 @@ SHT21.direct_read_sensor(:sht21)
 ## Work List
 - [ ] Finish documentation
 - [ ] Implement Alarms with GenEvent
+- [ ] Add a CRC function
 
 
 
