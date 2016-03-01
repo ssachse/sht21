@@ -15,10 +15,10 @@ defmodule SHT21.Mixfile do
      # Hex
      package: package,
      # ExDoc
-     #name: "SMT21",
-     #docs: [source_ref: "v#{@version}",
-     #       main: "SMT21",
-     #       source_url: "https://github.com/ssachse/sht21"]
+     name: "SMT21",
+     docs: [source_ref: "v#{@version}",
+            main: "SMT21",
+            source_url: "https://github.com/ssachse/sht21"]
    ]
   end
 
