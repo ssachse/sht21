@@ -1,9 +1,12 @@
 defmodule SHT21.Mixfile do
+
+  @version "0.1.0-dev"
+
   use Mix.Project
 
   def project do
     [app: :sht21,
-     version: "0.0.1",
+     version: @version,
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -11,12 +14,14 @@ defmodule SHT21.Mixfile do
   end
 
   def application do
-    [applications: [:logger]]
+    [applications: [:logger]],
+    mod: {SHT21, []}
   end
 
   defp deps do
      [{:elixir_ale, "~> 0.4.1" },
-      {:nerves, github: "nerves-project/nerves"}
+      {:earmark, "~> 0.1", only: [:dev, :docs]},
+      {:ex_doc, "~> 0.8", only: [:dev, :docs]}
      ]
   end
 end
