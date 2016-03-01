@@ -37,7 +37,7 @@ defmodule SHT21.Subsystem do
   end
 
   def read_sensor do
-    case I2c.start_link("i2c-1", @i2c_address) do
+    case I2c.start_link(Application.get_env(:sht21, :i2c_bus), @i2c_address) do
       {:ok, pid}       -> get_sensor(pid) 
       {:error, reason} -> Logger.error "SHT21 Serial Number: Could not read from I2c address #{@i2c_address}: #{reason}" 
     end
@@ -45,7 +45,7 @@ defmodule SHT21.Subsystem do
 
 
   def get_sensor_serial_number do
-    case I2c.start_link("i2c-1", @i2c_address) do
+    case I2c.start_link(Application.get_env(:sht21, :i2c_bus), @i2c_address) do
       {:ok, pid} ->  # read memory location 1
                      I2c.write(pid, <<0xfa, 0x0f>>) 
                      :timer.sleep 50
