@@ -1,0 +1,17 @@
+" Press ? for help
+
+.. (up a dir)
+/Volumes/pmr_live/sht21/
+▸ _build/
+▸ config/
+▸ deps/
+▾ lib/
+  ▾ sht21/
+      server.ex
+      subsystem.ex
+    sht21.ex
+▸ test/
+  mix.exs
+  mix.lock
+  NERD_tree_1
+  README.md
