@@ -36,7 +36,7 @@ defmodule SHT21.Server do
                   |> Keyword.merge(sensor_data) 
                   |> update_min_max_values(sensor_data)
 
-    IO.inspect new_state
+                  #IO.inspect new_state
     {:noreply, new_state }
   end
 
