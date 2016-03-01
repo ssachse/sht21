@@ -10,7 +10,16 @@ defmodule SHT21.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     description: "SHT21 Module",
+     # Hex
+     package: package,
+     # ExDoc
+     #name: "SMT21",
+     #docs: [source_ref: "v#{@version}",
+     #       main: "SMT21",
+     #       source_url: "https://github.com/ssachse/sht21"]
+   ]
   end
 
   def application do
@@ -24,4 +33,13 @@ defmodule SHT21.Mixfile do
       {:ex_doc, "~> 0.8", only: [:dev, :docs]}
      ]
   end
+
+  defp package, do: [
+    maintainers: ["Stefan Sachse"],
+    licenses: ["MIT"],
+    links: %{github: "https://github.com/ssachse/sht21"},
+    files: ~w(lib config) ++
+           ~w(README.md CHANGELOG.md LICENSE mix.exs)
+  ]
+
 end
