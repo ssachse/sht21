@@ -3,6 +3,9 @@
 A modul to read data from SHT21 temperature and humidity sensor on an
 embedded system.
 
+Thank you to the team of https://github.com/nerves-project
+to make it possible to use elixir on embedded systems.
+
 ## Features
 * Access to a SHT21 sensor that is connected via i2c
 * GenServer based

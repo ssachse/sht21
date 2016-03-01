@@ -63,17 +63,6 @@ defmodule SHT21.Server do
     if state[:intervall] > 0 do
       :timer.send_interval(state[:intervall], self(), :do_intervall)
     end
-
-    #case state.mode do
-    #  "static" ->
-    #    Logger.info "test"
-    #    #configure_with_static_ip(state)
-    #  "auto" ->
-    #    Logger.info "test"
-    #  #  configure_with_dynamic_ip(state)
-    #  #_ ->
-    ##    configure_with_dynamic_ip(state)
-    #end
     state
   end
 
@@ -86,23 +75,6 @@ defmodule SHT21.Server do
     end
     Keyword.merge(state, changes)
   end
-
-  # setup the interface to have a dynamic (dhcp or ip4ll) address
-  defp configure_with_dynamic_ip(state) do # -> new_state
-    Logger.debug "starting dynamic ip allocation"
-    state = update_and_announce state, status: "request"
-    params = raw_dhcp_request(state)
-    case params[:status] do
-      "bound" ->
-        configure_dhcp(state, params)
-      "renew" ->
-        configure_dhcp(state, params)
-      _ ->
-        configure_ip4ll(state)
-    end
-  end
-
-
 
 
   defp respond(t, atom), do: {atom, t}

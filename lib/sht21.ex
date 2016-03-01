@@ -6,13 +6,6 @@ defmodule SHT21 do
   ## Usage
   ```elixir
   ```
-  Sets up (configures) an adapter with the associated settings. The above
-  will try to acquire a ipv4 address via DHCP, reverting to AIPA/ipv4ll
-  addressing configuration if that fails, while retrying DHCP occasionally.
-  ```elixir
-  Ethernet.setup :eth0, mode: static, address: "192.168.5.8",
-        router: "192.168.5.1", mask: "255.255.255.0"
-  ```
   """
 
   use Application
