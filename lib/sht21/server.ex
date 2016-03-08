@@ -5,6 +5,7 @@ defmodule SHT21.Server do
   alias SHT21.Subsystem
 
   require Logger
+  use Timex
 
   @public_keys [
     :sensor, :sensorname, :temperature, :humidity, :intervall, :temp_alarm, :humidity_alarm
@@ -26,13 +27,16 @@ defmodule SHT21.Server do
   end
 
   def handle_call(:direct_read_sensor, _from, state) do
-    sensor_reading = Subsystem.read_sensor
+    at  = Date.now |> DateFormat.format!("%I:%M:%S", :strftime)
+    sensor_reading = Subsystem.read_sensor |> Keyword.merge([at: at])
     {:reply, sensor_reading, state }
   end
 
   def handle_info(:do_intervall, state) do
+    at  = Date.now |> DateFormat.format!("%I:%M:%S", :strftime)
     sensor_data = Subsystem.read_sensor
     new_state = state 
+                  |> Keyword.merge([at: at])
                   |> Keyword.merge(sensor_data) 
                   |> update_min_max_values(sensor_data)
 

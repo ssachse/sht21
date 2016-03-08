@@ -34,6 +34,12 @@ def deps do
 end
 ```
 
+set the i2c_bus in config.exs
+```elixir
+config :sht21, i2c_bus: "i2c-1" 
+```
+
+
 ```elixir
 SHT21.setup :sht21, intervall: <value in ms>
 ```
