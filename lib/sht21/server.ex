@@ -23,7 +23,7 @@ defmodule SHT21.Server do
 
 
   def handle_call(:read_sensor, _from, state) do
-    {:reply, Keyword.take(state,[:temperature, :humidity]), state }
+    {:reply, Keyword.take(state,[:temperature, :humidity, :at]), state }
   end
 
   def handle_call(:direct_read_sensor, _from, state) do
