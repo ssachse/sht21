@@ -8,7 +8,7 @@ defmodule SHT21.Server do
   use Timex
 
   @public_keys [
-    :sensor, :sensorname, :temperature, :humidity, :intervall, :temp_alarm, :humidity_alarm
+    :sensor, :sensorname, :serial_number, :temperature, :humidity, :intervall, :temp_alarm, :humidity_alarm
   ]
 
   def init({sensor, settings}) do
@@ -52,6 +52,10 @@ defmodule SHT21.Server do
                   |> Keyword.put(:humidity_min, min(sensor_data[:humidity], state[:humidity_min]))  
   end
 
+  def handle_call(:read_serial_number, _from, state) do
+    {:reply, Keyword.get(state, :serial_number), state}
+  end
+
   def handle_call(:settings, _from, state) do
     {:reply, settings(state), state}
   end
@@ -67,7 +71,7 @@ defmodule SHT21.Server do
     if state[:intervall] > 0 do
       :timer.send_interval(state[:intervall], self(), :do_intervall)
     end
-    state
+    state |> Keyword.merge([serial_number: Subsystem.get_sensor_serial_number])
   end
 
 

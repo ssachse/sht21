@@ -15,6 +15,7 @@ defmodule SHT21 do
   @type sensor :: Atom
   @type settings :: Keyword.t
   @type read_sensor :: Keyword.t
+  @type serial_number :: String.t
   @type reason :: any
 
   def start(_type, _args) do
@@ -62,6 +63,17 @@ defmodule SHT21 do
     sensor
     |> sensor_process
     |> GenServer.call :direct_read_sensor
+  end
+
+  @doc """
+  Read serial number from the sensor
+  So the sensor will not be blocked
+  """
+  @spec read_serial_number(sensor) :: serial_number
+  def read_serial_number(sensor) do
+    sensor
+    |> sensor_process
+    |> GenServer.call :read_serial_number
   end
 
   # return a process name for a process

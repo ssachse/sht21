@@ -59,7 +59,6 @@ defmodule SHT21.Subsystem do
                      :timer.sleep 50
                      mem2 = I2c.read(pid, 6)
                      snumber = mem1 <> mem2 |> decode_serial_number
-                     {:ok, snumber}
       {:error, reason} -> Logger.error "SHT21 Serial Number: Could not read from I2c address #{@i2c_address}: #{reason}" 
     end
   end
